@@ -5,9 +5,9 @@ module.exports = function check(str, bracketsConfig) {
 
   //из входящего массива заберем пары символов открытие/закрытие
   for (let item of bracketsConfig) {
-    //в кажддом подмассиве
+    //в каждом подмассиве
     for (let i = 0; i < item.length; i += 2) {
-      //если символ открытия == символу закрытия, выносим отдельно в массив
+      //если символ открытия == символу закрытия, выносим в отдельный массив
       if (item[i] === item[i + 1]) {
         equalSymbol.push(item[i]);
       } else {
@@ -17,7 +17,7 @@ module.exports = function check(str, bracketsConfig) {
     }
   }
 
-  //выведем массив всех закрывающих символов
+  //отдельно сохраним в массив все закрывающие символы из сформированного объекта
   let closeBrackets = Object.keys(brackets);
 
   //пробежимся по каждому символу входящей строки
@@ -50,7 +50,7 @@ module.exports = function check(str, bracketsConfig) {
       stack.push(str[i]);
     }
 
-    //обновляем массив ключей в конце, иначе |/7/8 попадет в стек сразу проверка пойдет на эти символы
+    //обновляем массив ключей в конце функции, иначе |/7/8 попадет в стек сразу проверка пойдет на эти символы
     closeBrackets = Object.keys(brackets);
   }
   return stack.length === 0;
